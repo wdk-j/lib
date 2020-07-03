@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}">
+    <title>图书编辑</title>
+</head>
+<body>
+<form th:action="@{/book_update(id=${book.bid})}" th:object="${book}" method='post' class="layui-form"
+      style="width: 500px;position: relative;top: 30px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">书籍id：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bid" readonly="readonly" required lay-verify="required"
+                   th:value="${book.bid}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">书名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bname" required lay-verify="required"
+                   th:value="${book.bname}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">出版社：</label>
+        <div class="layui-input-block">
+            <input type="text" name="baddress" required lay-verify="required"
+                   th:value="${book.baddress}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">作者：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bauthor" required lay-verify="required"
+                   th:value="${book.bauthor}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">出版日期：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bdate" readonly="readonly " required lay-verify="required"
+                   th:value="${#dates.format(book.bdate,'yyyy-MM-dd')}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">价格：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bprice" required lay-verify="required" th:value="${book.bprice}" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">在馆数量：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bnumber" required lay-verify="required" th:value="${book.bnumber}"
+                   autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <input type="hidden" name="binnumber" th:value="${book.binnumber}">
+    <input type="hidden" name="bindate" th:value="${#dates.format(book.bindate,'yyyy-MM-dd')}">
+    <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="submit()">立即提交</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+</form>
+
+
+</body>
+</html>

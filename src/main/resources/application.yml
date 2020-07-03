@@ -4,3 +4,5 @@ spring:
     url: jdbc:mysql://localhost:3306/lib?serverTimezone=UTC
     username: root
     password: jisiqi1999
+server:
+  port: 8081
