@@ -56,7 +56,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByUid(Integer uid) {
+        return userMapper.selectByUid(uid);
+    }
+
+    @Override
     public void changePassword(String password, String username) {
         userMapper.updatePassword(password, username);
+    }
+
+    @Override
+    public void changePasswordByUid(String password, Integer uid, String name) {
+        userMapper.updatePasswordByUid(password, uid, name);
     }
 }

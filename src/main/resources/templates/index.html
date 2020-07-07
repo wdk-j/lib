@@ -37,15 +37,13 @@
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
+                    <a th:href="@{/password_Change(uid=${user.uid})}">修改密码</a></dd>
                 <dd>
-                    <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
+                    <a th:href="@{/login}">切换账号</a></dd>
                 <dd>
                     <a th:href="@{/login}">退出</a></dd>
             </dl>
         </li>
-        <li class="layui-nav-item to-index">
-            <a href="/static">前台首页</a></li>
     </ul>
 </div>
 <!-- 顶部结束 -->
@@ -71,6 +69,16 @@
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>用户管理</cite></a>
                     </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('借阅管理','/bookBorrowing_List')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>借阅管理</cite></a>
+                    </li>
+                    <li>
+                        <a onclick="xadmin.add_tab('借阅历史管理','/bookHistory_ListAll')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>借阅历史管理</cite></a>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -82,30 +90,12 @@
                     <li>
                         <a onclick="xadmin.add_tab('图书查询','/book_List')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>图书查询</cite></a>
+                            <cite>图书借阅</cite></a>
                     </li>
                     <li>
-                        <a onclick="xadmin.add_tab('订单列表1','/order-list1')">
+                        <a onclick="xadmin.add_tab('借阅历史','/book_History')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表1</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="其它页面">&#xe6b4;</i>
-                    <cite>其它页面</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <a th:href="@{/login}" target="_blank">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>登录页面</cite></a>
-                    </li>
-                    <li>
-                        <a onclick="xadmin.add_tab('错误页面','error.html')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>错误页面</cite></a>
+                            <cite>借阅历史</cite></a>
                     </li>
                 </ul>
             </li>
@@ -131,7 +121,8 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe th:src="@{/welcome(name=${user.name},power=${user.power})}" frameborder="0" scrolling="yes"
+                <iframe th:src="@{/welcome(name=${user.name},power=${user.power},username=${user.username})}"
+                        frameborder="0" scrolling="yes"
                         class="x-iframe"></iframe>
             </div>
         </div>

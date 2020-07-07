@@ -25,6 +25,12 @@ public interface UserMapper {
     @Select("select * from user where username=#{username}")
     User selectByUsername(String username);
 
+    @Select("select * from user where uid=#{uid}")
+    User selectByUid(Integer uid);
+
     @Update("update user set password=#{password} where username=#{username}")
     void updatePassword(String password, String username);
+
+    @Update("update user set password=#{password},name=#{name} where uid=#{uid}")
+    void updatePasswordByUid(String password, Integer uid, String name);
 }

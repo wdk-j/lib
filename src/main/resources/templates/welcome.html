@@ -31,58 +31,50 @@
                 </div>
             </div>
         </div>
-        <div class="layui-col-md12">
-            <div class="layui-card">
-                <div class="layui-card-header">数据统计</div>
-                <div class="layui-card-body ">
-                    <ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
-                        <li class="layui-col-md2 layui-col-xs6">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>馆藏书籍</h3>
-                                <p>
-                                    <cite>66</cite></p>
-                            </a>
-                        </li>
-                        <li class="layui-col-md2 layui-col-xs6">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>用户数量</h3>
-                                <p>
-                                    <cite>12</cite></p>
-                            </a>
-                        </li>
-                        <li class="layui-col-md2 layui-col-xs6">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>文章数</h3>
-                                <p>
-                                    <cite>99</cite></p>
-                            </a>
-                        </li>
-                        <li class="layui-col-md2 layui-col-xs6">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>讨论数</h3>
-                                <p>
-                                    <cite>67</cite></p>
-                            </a>
-                        </li>
-                        <li class="layui-col-md2 layui-col-xs6">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>回复数</h3>
-                                <p>
-                                    <cite>67</cite></p>
-                            </a>
-                        </li>
-                        <li class="layui-col-md2 layui-col-xs6 ">
-                            <a href="javascript:;" class="x-admin-backlog-body">
-                                <h3>发帖数</h3>
-                                <p>
-                                    <cite>6766</cite></p>
-                            </a>
-                        </li>
-                    </ul>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <table class="layui-table layui-form">
+                                <div class="layui-card-header">
+                                    在借图书
+                                </div>
+                                <thead>
+                                <tr>
+                                    <th>图书编号</th>
+                                    <th>书名</th>
+                                    <th>借阅读者</th>
+                                    <th>借阅日期</th>
+                                    <th>应还日期</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="b:${bookBorrowings}">
+                                    <td th:text="${b.bid}"></td>
+                                    <td th:text="${b.bname}"></td>
+                                    <td th:text="${b.name}"></td>
+                                    <td th:text="${#dates.format(b.startdate,'yyyy-MM-dd')}"></td>
+                                    <td th:text="${#dates.format(b.enddate,'yyyy-MM-dd')}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-card-body ">
+                            <div class="page">
+                                <div>
+                                    <a class="prev" href="">&lt;&lt;</a>
+                                    <span class="current">1</span>
+                                    <a class="num" href="">2</a>
+                                    <a class="num" href="">3</a>
+                                    <a class="next" href="">&gt;&gt;</a></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </div>

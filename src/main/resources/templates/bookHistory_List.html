@@ -20,7 +20,7 @@
                 <a href="">首页</a>
                 <a href="">借阅服务</a>
                 <a>
-                    <cite>图书借阅</cite></a>
+                    <cite>借阅历史</cite></a>
             </span>
     <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right"
        onclick="location.reload()" title="刷新">
@@ -34,20 +34,6 @@
                 <div class="layui-card-body ">
                     <form class="layui-form layui-col-space5">
                         <div class="layui-input-inline layui-show-xs-block">
-                            <input class="layui-input" placeholder="开始入库日期" name="start" id="start"></div>
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <input class="layui-input" placeholder="截止入库日期" name="end" id="end"></div>
-
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <select name="contrller">
-                                <option value="">图书状态</option>
-                                <option value="0">全部在库</option>
-                                <option value="1">部分出借</option>
-                                <option value="2">全部出借</option>
-                                <option value="3">已经下架</option>
-                            </select>
-                        </div>
-                        <div class="layui-input-inline layui-show-xs-block">
                             <input type="text" name="username" placeholder="图书编号或书名" autocomplete="off"
                                    class="layui-input"></div>
                         <div class="layui-input-inline layui-show-xs-block">
@@ -59,34 +45,29 @@
                 <table class="layui-table layui-form">
                     <thead>
                     <tr>
-                        <th>
-                            <input type="checkbox" name="" lay-skin="primary">
-                        </th>
                         <th>图书编号</th>
                         <th>图书名称</th>
-                        <th>出版社</th>
-                        <th>作者</th>
-                        <th>出版日期</th>
-                        <th>价格</th>
-                        <th>入馆日期</th>
-                        <th>在馆数量</th>
+                        <th>借阅读者帐号</th>
+                        <th>借阅读者</th>
+                        <th>借阅日期</th>
+                        <th>应还日期</th>
+                        <th>实际还书日期</th>
+                        <th>罚金</th>
                         <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="u : ${list}">
-                        <td>
-                            <input type="checkbox" name="" lay-skin="primary"></td>
                         <td th:text="${u.bid}"></td>
                         <td th:text="${u.bname}"></td>
-                        <td th:text="${u.baddress}"></td>
-                        <td th:text="${u.bauthor}"></td>
-                        <td th:text="${#dates.format(u.bdate,'yyyy-MM-dd')}"></td>
-                        <td th:text="${u.bprice}"></td>
-                        <td th:text="${#dates.format(u.bindate,'yyyy-MM-dd')}"></td>
-                        <td th:text="${u.bnumber}"></td>
+                        <td th:text="${u.username}"></td>
+                        <td th:text="${u.name}"></td>
+                        <td th:text="${#dates.format(u.startdate,'yyyy-MM-dd')}"></td>
+                        <td th:text="${#dates.format(u.enddate,'yyyy-MM-dd')}"></td>
+                        <td th:text="${#dates.format(u.truedate,'yyyy-MM-dd')}"></td>
+                        <td th:text="${u.fine}"></td>
                         <td class="td-manage">
-                            <a title="借阅" th:href="@{/book_Borrowing(bid=${u.bid})}" href="javascript:;">
+                            <a readonly title="缴纳罚金咨询管理员" href="javascript:;">
                                 <i class="layui-icon">&#xe63c;</i></a>
                         </td>
                     </tr>
@@ -98,10 +79,7 @@
                 <div class="page">
                     <div>
                         <a class="prev" href="">&lt;&lt;</a>
-                        <a class="current">1</a>
-                        <span class="current">2</span>
-                        <a class="num" href="">3</a>
-                        <a class="num" href="">100</a>
+                        <span class="current">1</span>
                         <a class="next" href="">&gt;&gt;</a></div>
                 </div>
             </div>

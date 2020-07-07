@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="x-admin-sm" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/lib/layui/css/layui.css}">
+    <title>图书编辑</title>
+</head>
+<body>
+<form th:action="@{/fine_Pay2}" th:object="${bookHistory}" method='post' class="layui-form"
+      style="width: 500px;position: relative;top: 30px">
+    <div class="layui-form-item">
+        <label class="layui-form-label">书籍id：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bid" readonly="readonly" required lay-verify="required"
+                   th:value="${bookHistory.bid}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">书名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="bname" readonly="readonly" required lay-verify="required"
+                   th:value="${bookHistory.bname}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">读者账号：</label>
+        <div class="layui-input-block">
+            <input type="text" name="username" readonly="readonly" required lay-verify="required"
+                   th:value="${bookHistory.username}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">读者姓名：</label>
+        <div class="layui-input-block">
+            <input type="text" name="name" readonly="readonly" required lay-verify="required"
+                   th:value="${bookHistory.name}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">借阅日期：</label>
+        <div class="layui-input-block">
+            <input type="text" name="startdate" readonly="readonly " required lay-verify="required"
+                   th:value="${#dates.format(bookHistory.startdate,'yyyy-MM-dd')}" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">应还日期：</label>
+        <div class="layui-input-block">
+            <input type="text" name="enddate" readonly="readonly " required lay-verify="required"
+                   th:value="${#dates.format(bookHistory.enddate,'yyyy-MM-dd')}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">重置罚金：</label>
+        <div class="layui-input-block">
+            <input type="text" name="fine" required lay-verify="required"
+                   th:value="${bookHistory.fine}" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <input type="hidden" name="number" th:value="${bookHistory.number}">
+    <input type="hidden" name="uid" th:value="${bookHistory.uid}">
+    <div class="layui-input-block">
+        <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="submit()">缴纳完成</button>
+        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+</form>
+
+
+</body>
+</html>

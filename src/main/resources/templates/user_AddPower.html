@@ -21,7 +21,7 @@
 <body>
 <div class="layui-fluid">
     <div class="layui-row">
-        <form class="layui-form" th:action="@{/user_Insert}" th:object="${user}">
+        <form class="layui-form" th:action="@{/user_Insert2}" th:object="${user}">
             <div class="layui-form-item">
                 <label class="layui-form-label">
                     <span class="x-red">*</span>用户名</label>
@@ -56,6 +56,22 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">
+                    <span class="x-red">*</span>用户权限</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="power" value="读者" title="读者" checked>
+                    <input type="radio" name="power" value="管理员" title="管理员">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
+                    <span class="x-red">*</span>用户状态</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="state" value="已启用" title="已启用" checked>
+                    <input type="radio" name="state" value="已禁用" title="已禁用">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">
                     <span class="x-red">*</span>密码</label>
                 <div class="layui-input-inline">
                     <input type="password" id="L_pass" name="password" lay-verify="pass" autocomplete="off"
@@ -71,7 +87,7 @@
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
-                <button class="layui-btn" lay-submit="">注册</button>
+                <button class="layui-btn" lay-submit="">增加</button>
             </div>
         </form>
     </div>
